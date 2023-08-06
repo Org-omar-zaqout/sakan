@@ -2,12 +2,9 @@ package conn;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-
 import java.sql.SQLException;
-
 import java.util.logging.Logger;
-
-
+import java.sql.Statement;
 
 public class connect {
 	protected Connection connection;
@@ -18,6 +15,14 @@ public class connect {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             		connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/sakancom","root","123456");
+		 Statement statement = connection.createStatement();
+
+            // Execute the SQL query to change the password
+            statement.executeUpdate("ALTER USER 'root'@'localhost' IDENTIFIED BY 'new_password';");
+
+            // Close the resources
+            statement.close();
+            connection.close();
             		
             		
         } catch (ClassNotFoundException e) {
