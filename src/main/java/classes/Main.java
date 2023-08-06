@@ -16,8 +16,8 @@ public class Main {
 	static Scanner scan = new Scanner(System.in);
 	static final Logger logger = Logger.getLogger(Main.class.getName());
 	public static void main(String[] args) throws SQLException  {
-		
-		while(true) {
+	private boolean shouldContinue = true;
+		while(shouldContinue) {
 			
 		
 
@@ -58,6 +58,7 @@ if(login.isLoggedAdmin()) {
 	
 	
 	}
+	
 	
 		
 }
@@ -129,7 +130,12 @@ else if(login.isLoggedTenant()) {
 		
 }
 
+ System.out.println("Do you want to continue? (y/n)");
+    String userInput = scanner.nextLine();
 
+    if (userInput.equalsIgnoreCase("n")) {
+        shouldContinue = false;
+    }
 		}
 	}
 	//Admin
