@@ -12,22 +12,27 @@ public class connect {
 	private String pass="123456";
     public void func() throws SQLException {
 
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            		connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/sakancom","root",pass);
-		 Statement statement = connection.createStatement();
+       try {
+    Class.forName("com.mysql.cj.jdbc.Driver");
+    String url = "jdbc:mysql://localhost:3306/sakancom";
+    String user = "root";
+    String pass = "your_password";
 
-            // Execute the SQL query to change the password
-            statement.executeUpdate("ALTER USER 'root'@'localhost' IDENTIFIED BY 'new_password';");
+    try (Connection connection = DriverManager.getConnection(url, user, pass);
+         Statement statement = connection.createStatement()) {
 
-            // Close the resources
-            statement.close();
-            connection.close();
-            		
-            		
-        } catch (ClassNotFoundException e) {
-        	logger.info("An SQL exception occurred"+e);        }
+        
+        statement.executeUpdate("ALTER USER 'root'@'localhost' IDENTIFIED BY 'new_password';");
+        
+
+    } catch (SQLException e) {
+        // Handle SQL exception
+        logger.info("An SQL exception occurred: " + e);
     }
+} catch (ClassNotFoundException e) {
+    // Handle class not found exception
+    logger.info("Class not found exception occurred: " + e);
+}
 
     
 
