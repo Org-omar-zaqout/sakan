@@ -9,12 +9,12 @@ import java.sql.Statement;
 public class connect {
 	protected Connection connection;
 	private static final Logger logger = Logger.getLogger(connect.class.getName());
-
+	private String pass="123456";
     public void func() throws SQLException {
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            		connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/sakancom","root","123456");
+            		connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/sakancom","root",pass);
 		 Statement statement = connection.createStatement();
 
             // Execute the SQL query to change the password
