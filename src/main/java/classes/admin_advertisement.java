@@ -1,4 +1,5 @@
 package classes;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -87,20 +88,33 @@ public class admin_advertisement {
 		this.id=id;
 		joption();
 		con.func();
-		Statement statement =con.getConnection().createStatement();
 		if(this.option==0) {
-		String acc_req="UPDATE `houses` SET `isAccept`='1' WHERE `id`="+this.id+";";
-		statement.executeUpdate(acc_req);
+			 String updateQuery = "UPDATE `houses` SET `isAccept`='1' WHERE `id`=?";
+			 try (PreparedStatement preparedStatement = con.getConnection().prepareStatement(updateQuery)) {
+	              
+	                preparedStatement.setInt(1, this.id);
+	                
+	              
+	                preparedStatement.executeUpdate();
+	            }
+	         catch (SQLException e) {
+	        	 logger.info("An SQL exception occurred"+e);
+	        }
 		}
 		else if(this.option==1) {
-			String acc_req="UPDATE `houses` SET `isReject`='1' WHERE `id`="+this.id+";";
-
-			statement.executeUpdate(acc_req);
+			String acc_req="UPDATE `houses` SET `isReject`='1' WHERE `id`=?;";
+			 try (PreparedStatement preparedStatement = con.getConnection().prepareStatement(acc_req)) {
+	              
+	                preparedStatement.setInt(1, this.id);
+	                
+	              
+	                preparedStatement.executeUpdate();
+	            }
+	         catch (SQLException e) {
+	        	 logger.info("An SQL exception occurred"+e);
+	        }
 		}
-	/*	else {
-			int x=scan.nextInt();
-			req_houses(x);
-		}*/
+
 		
 		
 		
