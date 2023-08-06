@@ -175,9 +175,9 @@ else if(login.isLoggedTenant()) {
 		String information_contact=scan.next();
 		
 		
-		owner_adv=new Owner_add_houses(name_House,picture_House,location_House,available_services_House,price_Housescan,information_contact);
+		Owner_add_houses new_houses=new Owner_add_houses(name_House,picture_House,location_House,available_services_House,price_Housescan,information_contact);
 		
-		owner_adv.add(login);
+		new_houses.add(login);
 			
 		}
 	public static void Owner_switch2(Dashboard Db,loginpage login) throws SQLException {
