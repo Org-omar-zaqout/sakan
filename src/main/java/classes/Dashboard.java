@@ -3,7 +3,6 @@ package classes;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -82,9 +81,8 @@ public class Dashboard{
 				statement.executeUpdate();
 				
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+				
+				logger.info("An SQL exception occurred"+e);			}
 			for(int j=0;j<num_apart;j++) {
 				
 				String insert_apartment="INSERT INTO `apartments`( `id_house`,`id_floor`,`num_bathroom`,`num_bedroom`,`balcony`,`for_student`) VALUES (?,?,?,?,?,?);";
@@ -94,8 +92,7 @@ public class Dashboard{
 	                 ResultSet resultSet = statement.executeQuery(max_floor);
 	                if (resultSet.next()) {
 	                    x = resultSet.getInt(1);
-	                  //  x++;
-	                    //logger.info("X="+x);
+	   
 	                }
 					statement.setInt(1, this.id_House);
 					statement.setInt(2, x);
@@ -109,8 +106,7 @@ public class Dashboard{
 					this.adding=true;
 					
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					logger.info("An SQL exception occurred"+e);
 				}
 				
 			}

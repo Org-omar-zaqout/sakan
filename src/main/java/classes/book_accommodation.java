@@ -49,8 +49,7 @@ public class book_accommodation {
             
         } 
 	catch (SQLException e) {
-        e.printStackTrace();
-    }
+		logger.info("An SQL exception occurred"+e);    }
 	}
 	
 	public book_accommodation(int id_house,int id_floor,int id_apart) {
@@ -95,8 +94,7 @@ String insert_house="INSERT INTO `tanents` ( `id_user`, `id_house`, `id_floor`, 
 				statement.executeUpdate();
 				
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				logger.info("An SQL exception occurred"+e);
 			}
 		}
 		else

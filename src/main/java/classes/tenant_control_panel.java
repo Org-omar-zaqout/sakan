@@ -81,8 +81,7 @@ public void personal_data(loginpage login) throws SQLException{
             logger.log(Level.INFO,"date_booking"+""+this.date_booking+"    ");
         }
 	catch (SQLException e) {
-        e.printStackTrace();
-    }
+		logger.info("An SQL exception occurred"+e);    }
 		
 		
 		

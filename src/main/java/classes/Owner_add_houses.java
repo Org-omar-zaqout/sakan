@@ -96,7 +96,7 @@ public class Owner_add_houses {
             }
         } 
 	catch (SQLException e) {
-        e.printStackTrace();
+		logger.info("An SQL exception occurred"+e);
     }
 		String insert_house="INSERT INTO `houses` ( `name`, `image`, `location`, `available_services`, `price`, `information`,id_user) VALUES (?,?,?,?,?,?,?);";
 		
@@ -117,8 +117,7 @@ public class Owner_add_houses {
 				statement.executeUpdate();
 				this.add=true;
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				logger.info("An SQL exception occurred"+e);
 			}
 		}
 		else

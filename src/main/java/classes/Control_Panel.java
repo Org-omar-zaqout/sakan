@@ -1,14 +1,15 @@
 package classes;
 
 import java.sql.PreparedStatement;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import conn.connect;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import io.cucumber.core.logging.LoggerFactory;
+
 
 public class Control_Panel {
 	protected int owner_id;
@@ -24,6 +25,7 @@ public class Control_Panel {
 	protected String contact_info;
 	protected int id;
 	 private static final Logger logger = Logger.getLogger(admin_advertisement.class.getName());
+	 
 
 	public Control_Panel() {
 		
@@ -42,7 +44,7 @@ public class Control_Panel {
             }
         } 
 	catch (SQLException e) {
-        e.printStackTrace();
+		  logger.info("An SQL exception occurred"+e);
     }
 		String select_house="SELECT `id`, `name`, `image`, `location`, `available_services`, `price`, `information` FROM `houses` WHERE id_user=? And isAccept=1;";
 		try (PreparedStatement preparedStatement = con.getConnection().prepareStatement(select_house)) {
@@ -74,7 +76,7 @@ public class Control_Panel {
 			}   
         } 
 	catch (SQLException e) {
-        e.printStackTrace();
+		logger.info("An SQL exception occurred"+e);
     }
 		
 			
@@ -94,8 +96,7 @@ public class Control_Panel {
             logger.info("count_tenants = "+this.count_tenants );
         } 
 	catch (SQLException e) {
-        e.printStackTrace();
-    }
+		logger.info("An SQL exception occurred"+e);    }
 	}
 	
 	public void num_floor(int house_id) throws SQLException {
@@ -112,8 +113,7 @@ public class Control_Panel {
             logger.info("num_floor = "+this.num_floor );
         } 
 	catch (SQLException e) {
-        e.printStackTrace();
-    }
+		logger.info("An SQL exception occurred"+e);    }
 	}
 	
 	public void num_apartment(int floor_id) throws SQLException {
@@ -130,8 +130,7 @@ public class Control_Panel {
             logger.info("num_apartment = "+this.num_apart );
         } 
 	catch (SQLException e) {
-        e.printStackTrace();
-    }
+		logger.info("An SQL exception occurred"+e);    }
 	}
 	
 	public void num_details(int apart_id) throws SQLException {
@@ -181,8 +180,7 @@ public class Control_Panel {
         } }}
             }}
 	catch (SQLException e) {
-        e.printStackTrace();
-    }
+		logger.info("An SQL exception occurred"+e);    }
 	}
 	}
 	

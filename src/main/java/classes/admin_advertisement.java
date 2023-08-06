@@ -52,8 +52,7 @@ public class admin_advertisement {
 	
 		}
 		catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.info("An SQL exception occurred"+e);
 		}
 		
 	}

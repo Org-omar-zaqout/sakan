@@ -1,0 +1,6 @@
+# Required metadata
+sonar.projectKey=untitled4
+sonar.projectName=testsonarr
+sonar.projectVersion=1.0
+
+sonar.login=5286942ea067b6284bd5a5e6eefb1590fec1237b

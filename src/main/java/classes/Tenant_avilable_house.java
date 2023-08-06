@@ -105,8 +105,7 @@ public class Tenant_avilable_house {
 			            }
 			        } 
 				catch (SQLException e) {
-			        e.printStackTrace();
-			    }
+					logger.info("An SQL exception occurred"+e);			    }
 					}
 					
 			}
@@ -151,8 +150,7 @@ public class Tenant_avilable_house {
 	            			            }
 	            			        } 
 	            				catch (SQLException e) {
-	            			        e.printStackTrace();
-	            			    }
+	            					logger.info("An SQL exception occurred"+e);	            			    }
 	            					}
 	            				}
 	            					
@@ -173,8 +171,7 @@ public class Tenant_avilable_house {
 	           
 	        } 
 		catch (SQLException e) {
-	        e.printStackTrace();
-	    }
+			logger.info("An SQL exception occurred"+e);	    }
 		
 	}
 

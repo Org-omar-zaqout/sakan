@@ -53,8 +53,7 @@ public void watching(loginpage login) throws SQLException {
 
 	}
 	catch (SQLException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
+		logger.info("An SQL exception occurred"+e);
 	}
 	
 }
@@ -79,7 +78,7 @@ public void found_house() throws SQLException {
         
     } 
 catch (SQLException e) {
-    e.printStackTrace();
+	logger.info("An SQL exception occurred"+e);
 }
 }
 

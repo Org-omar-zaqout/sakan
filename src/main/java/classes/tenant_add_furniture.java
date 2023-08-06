@@ -46,15 +46,15 @@ public class tenant_add_furniture{
             }
         } 
 	catch (SQLException e) {
-        e.printStackTrace();
-    }
+		logger.info("An SQL exception occurred"+e);
+		}
 		
 	
 
 		
 	
 		
-		//this.add = false;
+	
 		if(login.isLoggedTenant())
 		{	
 			logger.log(Level.INFO,"the tenant loggin");
@@ -68,8 +68,7 @@ public class tenant_add_furniture{
 				this.add_f=true;
 				logger.log(Level.INFO,"the tenant is loggin");
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				logger.info("An SQL exception occurred"+e);
 			}
 		}
 		else
