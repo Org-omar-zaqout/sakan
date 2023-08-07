@@ -29,11 +29,13 @@ public class connect {
         // Handle SQL exception
         logger.info("An SQL exception occurred: " + e);
     }
-} catch (ClassNotFoundException e) {
+}
+       catch (ClassNotFoundException e) {
     // Handle class not found exception
     logger.info("Class not found exception occurred: " + e);
-}
 
+}
+    }
     
 
 	public Connection getConnection() {
