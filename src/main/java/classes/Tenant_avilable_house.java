@@ -45,8 +45,8 @@ public class Tenant_avilable_house {
 		return flag_found;
 		
 	}
-	
-	public void Select_houses(loginpage login) throws SQLException{
+	String select_house="SELECT `name`, `image`, `location`, `available_services`, `price` FROM `houses` WHERE `id`=?;";
+/*	public void Select_houses(loginpage login) throws SQLException{
 		String is_S="SELECT `id_user` FROM `student` WHERE `id_user`=?;";
 		String select_house="SELECT `name`, `image`, `location`, `available_services`, `price` FROM `houses` WHERE `id`=?;";
 		
@@ -183,6 +183,93 @@ public class Tenant_avilable_house {
 			logger.info(SQL_EXCEPTION_MESSAGE + e);
 			}
 		
+	}
+*/
+	public void Select_houses(loginpage login) throws SQLException {
+	    con.func();
+
+	    int tenant_id = getTenantId(login);
+
+	    if (tenant_id == -1) {
+	        logger.info("Error retrieving tenant ID");
+	        return;
+	    }
+
+	    if (isStudent(tenant_id)) {
+	        selectAndLogApartments(con, login, true);
+	    } else {
+	        selectAndLogApartments(con, login, false);
+	    }
+	}
+
+	private int getTenantId(loginpage login) throws SQLException {
+	    String select_id = "SELECT `id` FROM `users` WHERE `type_user`='tenant' And `username`=?;";
+
+	    try (PreparedStatement preparedStatement = con.getConnection().prepareStatement(select_id)) {
+	        preparedStatement.setString(1, login.username);
+	        try (ResultSet resultSet = preparedStatement.executeQuery()) {
+	            if (resultSet.next()) {
+	                return resultSet.getInt("id");
+	            }
+	        }
+	    } catch (SQLException e) {
+	        logger.info(SQL_EXCEPTION_MESSAGE + e);
+	    }
+
+	    return -1;
+	}
+
+	private boolean isStudent(int tenant_id) throws SQLException {
+	    String is_S = "SELECT `id_user` FROM `student` WHERE `id_user`=?;";
+
+	    try (PreparedStatement preparedStatement = con.getConnection().prepareStatement(is_S)) {
+	        preparedStatement.setInt(1, tenant_id);
+	        try (ResultSet resultSet = preparedStatement.executeQuery()) {
+	            return resultSet.next();
+	        }
+	    } catch (SQLException e) {
+	        logger.info(SQL_EXCEPTION_MESSAGE + e);
+	    }
+
+	    return false;
+	}
+
+	private void selectAndLogApartments(connect con, loginpage login, boolean isForStudent) throws SQLException {
+	    String select_apart_query = isForStudent
+	            ? "SELECT `id_apartment`, `id_floor`, `id_house` FROM `apartments` WHERE`for_student`='1';"
+	            : "SELECT `id_apartment`, `id_floor`, `id_house` FROM `apartments` WHERE`for_student`='0';";
+
+	    try (Statement stmt = con.getConnection().createStatement()) {
+	        if (login.isLoggedTenant()) {
+	            ResultSet rs = stmt.executeQuery(select_apart_query);
+
+	            while (rs.next()) {
+	                int id_apartment = rs.getInt("id_apartment");
+	                int id_floor = rs.getInt("id_floor");
+	                int id_house = rs.getInt("id_house");
+
+	                try (PreparedStatement preparedStatement = con.getConnection().prepareStatement(select_house)) {
+	                    preparedStatement.setInt(1, id_house);
+	                    try (ResultSet resultSet = preparedStatement.executeQuery()) {
+	                        if (resultSet.next()) {
+	                            String name = resultSet.getString("name");
+	                            String image = resultSet.getString("image");
+	                            String location = resultSet.getString("location");
+	                            String available_services = resultSet.getString("available_services");
+	                            int price = resultSet.getInt("price");
+
+	                            logger.log(Level.INFO, id_house + ", " + name + ", " + id_floor + ", " + id_apartment
+	                                    + ", " + location + ", " + available_services + "," + price + ", ");
+	                        }
+	                    }
+	                } catch (SQLException e) {
+	                    logger.info(SQL_EXCEPTION_MESSAGE + e);
+	                }
+	            }
+	        } else {
+	            logger.log(Level.INFO, "The Tenant is not logged in");
+	        }
+	    }
 	}
 
 	public boolean isFlag_found() {
