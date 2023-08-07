@@ -17,7 +17,7 @@ public class Main {
 	static final Logger logger = Logger.getLogger(Main.class.getName());
 	private static final String NUMBER_NOT_EXIST_MESSAGE = "The number is not exist ";
 	
-	public static void main(String[] args) throws SQLException  {
+	/*public static void main(String[] args) throws SQLException  {
 	 boolean shouldContinue = true;
 		while(shouldContinue) {
 			
@@ -143,7 +143,141 @@ else if(login.isLoggedTenant()) {
     }
 		}
 	}
+	*/
+	public static void main(String[] args) throws SQLException {
+	    Scanner scan = new Scanner(System.in);
+	    boolean shouldContinue = true;
+
+	    while (shouldContinue) {
+	        logger.info("Enter Username ");
+	        String username = scan.next();
+	        logger.info("Enter Password ");
+	        String password = scan.next();
+
+	        loginpage login = new loginpage(username, password);
+	        boolean loggedIn = login.validateCredentials(username, password);
+
+	        if (!loggedIn) {
+	            logger.info("Invalid username or password");
+	            continue;
+	        }
+
+	        if (login.isLoggedAdmin()) {
+	            adminFlow(scan, login);
+	        } else if (login.isLoggedOwner()) {
+	            ownerFlow(scan, login);
+	        } else if (login.isLoggedTenant()) {
+	            tenantFlow(scan, login);
+	        } else {
+	            logger.info("Invalid user type");
+	        }
+
+	        logger.info("Do you want to continue? (y/n)");
+	        String userInput = scan.next();
+	        if (userInput.equalsIgnoreCase("n")) {
+	            shouldContinue = false;
+	        }
+	    }
+	}
+
+	private static void adminFlow(Scanner scan, loginpage login) throws SQLException {
+	    admin_advertisement adminAdv = new admin_advertisement();
+	    admin_watching_res adminWatch = new admin_watching_res();
+	    logger.info("login AS Admin ");
+
+	    boolean flagAdmin = true;
+	    while (flagAdmin) {
+	        logger.info("1- Show add requests \n" + "2-  Watching reservations \n 3- Logout Admin \n choise option");
+	        int switchValue = scan.nextInt();
+
+	        switch (switchValue) {
+	            case 1:
+	                Admin_switch1(adminAdv, login);
+	                break;
+	            case 2:
+	                Admin_switch2(adminWatch, login);
+	                break;
+	            case 3:
+	                Admin_switch3(login);
+	                flagAdmin = false;
+	                break;
+	            default:
+	                logger.info("Invalid option");
+	                break;
+	        }
+	    }
+	}
+
+	private static void ownerFlow(Scanner scan, loginpage login) throws SQLException {
+	    Owner_add_houses ownerAdd = new Owner_add_houses();
+	    Dashboard dashboard = new Dashboard();
+	    Control_Panel controlPanel = new Control_Panel();
+	    logger.info("login AS Owner ");
+
+	    boolean flagOwner = true;
+	    while (flagOwner) {
+	        logger.info("1- Adding house \n" + "2-  Dashboard \n 3-  Control Panel \n 4- Logout Owner \n choose option");
+	        int switchValue = scan.nextInt();
+
+	        switch (switchValue) {
+	            case 1:
+	                Owner_switch1(ownerAdd, login);
+	                break;
+	            case 2:
+	                Owner_switch2(dashboard, login);
+	                break;
+	            case 3:
+	                Owner_switch3(controlPanel, login);
+	                break;
+	            case 4:
+	                Owner_switch4(login);
+	                flagOwner = false;
+	                break;
+	            default:
+	                logger.info("Invalid option");
+	                break;
+	        }
+	    }
+	}
+
+	private static void tenantFlow(Scanner scan, loginpage login) throws SQLException {
+	    Tenant_avilable_house tenantAvail = new Tenant_avilable_house();
+	    book_accommodation tenantBook = new book_accommodation();
+	    tenant_add_furniture tenantFurniture = new tenant_add_furniture();
+	    tenant_control_panel tenantCP = new tenant_control_panel();
+	    logger.info("login AS Tenant ");
+
+	    boolean flagTenant = true;
+	    while (flagTenant) {
+	        logger.info("1- Show available housing \n" + "2-  book accommodation \n 3- Adding furniture \n 4-  The presence of a tenant control panel \n 5- Logout Tenant \n choose option");
+	        int switchValue = scan.nextInt();
+
+	        switch (switchValue) {
+	            case 1:
+	                Tenant_switch1(tenantAvail, login);
+	                break;
+	            case 2:
+	                Tenant_switch2(tenantBook, login);
+	                break;
+	            case 3:
+	                Tenant_switch3(tenantFurniture, login);
+	                break;
+	            case 4:
+	                Tenant_switch4(tenantCP, login);
+	                break;
+	            case 5:
+	                Tenant_switch5(login);
+	                flagTenant = false;
+	                break;
+	            default:
+	                logger.info("Invalid option");
+	                break;
+	        }
+	    }
+	}
+
 	//Admin
+	
 	public static void Admin_switch1(admin_advertisement admin_adv,loginpage login) throws SQLException {
 			
 		admin_adv.Select_houses(login);

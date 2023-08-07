@@ -34,7 +34,7 @@ public class loginpage {
 		
 	}
 	
-	public void validateCredentials(String username, String password) throws SQLException {
+	public boolean validateCredentials(String username, String password) throws SQLException {
 		connect con=new connect();
 		con.func();
         String sql = "SELECT * FROM users WHERE username = ? AND password = ? ";
@@ -74,6 +74,7 @@ public class loginpage {
         } catch (SQLException e) {
           System.out.print(e);
         }
+		return flag_login;
 
         // The credentials are invalid
         
