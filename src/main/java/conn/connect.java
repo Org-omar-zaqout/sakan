@@ -33,7 +33,7 @@ public class connect {
        catch (ClassNotFoundException e) {
     // Handle class not found exception
     logger.info("Class not found exception occurred: " + e);
-
+//
 }
     }
     
