@@ -96,10 +96,10 @@ public class Main {
 
 	        switch (switchValue) {
 	            case 1:
-	                Owner_switch1(ownerAdd, login);
+	                Owner_switch1( login);
 	                break;
 	            case 2:
-	                Owner_switch2(dashboard, login);
+	                Owner_switch2( login);
 	                break;
 	            case 3:
 	                Owner_switch3(controlPanel, login);
@@ -117,8 +117,7 @@ public class Main {
 
 	private static void tenantFlow(Scanner scan, loginpage login) throws SQLException {
 	    Tenant_avilable_house tenantAvail = new Tenant_avilable_house();
-	    book_accommodation tenantBook = new book_accommodation();
-	    tenant_add_furniture tenantFurniture = new tenant_add_furniture();
+	   
 	    tenant_control_panel tenantCP = new tenant_control_panel();
 	    logger.info("login AS Tenant ");
 
@@ -132,10 +131,10 @@ public class Main {
 	                Tenant_switch1(tenantAvail, login);
 	                break;
 	            case 2:
-	                Tenant_switch2(tenantBook, login);
+	                Tenant_switch2( login);
 	                break;
 	            case 3:
-	                Tenant_switch3(tenantFurniture, login);
+	                Tenant_switch3( login);
 	                break;
 	            case 4:
 	                Tenant_switch4(tenantCP, login);
@@ -151,7 +150,7 @@ public class Main {
 	    }
 	}
 
-	//Admin
+	
 	
 	public static void Admin_switch1(admin_advertisement admin_adv,loginpage login) throws SQLException {
 			
@@ -172,9 +171,9 @@ public class Main {
 		logger.info("Admin IS Logged out ");
 		
 	}
-//owner
+
 	
-	public static void Owner_switch1(Owner_add_houses owner_adv,loginpage login) throws SQLException {
+	public static void Owner_switch1(loginpage login) throws SQLException {
 		logger.info("Enter name_House ");
 		String name_House=scan.next();
 		logger.info("Enter picture_House ");
@@ -194,7 +193,7 @@ public class Main {
 		new_houses.add(login);
 			
 		}
-	public static void Owner_switch2(Dashboard Db,loginpage login) throws SQLException {
+	public static void Owner_switch2(loginpage login) throws SQLException {
 		
 		
 		logger.info("Enter id_House ");
@@ -251,7 +250,7 @@ public static void Tenant_switch1(Tenant_avilable_house tenant_aval,loginpage lo
 	tenant_aval.Select_houses(login);
 		
 	}
-public static void Tenant_switch2(book_accommodation tenant_book,loginpage login) throws SQLException {
+public static void Tenant_switch2(loginpage login) throws SQLException {
 	logger.info("Enter id_house ");
 	int id_house=scan.nextInt();
 	logger.info("Enter id_floor ");
@@ -264,7 +263,7 @@ public static void Tenant_switch2(book_accommodation tenant_book,loginpage login
 	Bookaccommodation.insert_book(login);
 	
 }
-public static void Tenant_switch3(tenant_add_furniture tt,loginpage login) throws SQLException {
+public static void Tenant_switch3(loginpage login) throws SQLException {
 	
 	logger.info("Enter name ");
 	String name=scan.next();	
