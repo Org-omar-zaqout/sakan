@@ -23,7 +23,9 @@ public class Control_Panel {
 	protected int id_user;
 	protected String contact_info;
 	protected int id;
+    private static final String SQL_EXCEPTION_MESSAGE = "An SQL exception occurred";
 	 private static final Logger logger = Logger.getLogger(admin_advertisement.class.getName());
+	 
 	 
 
 
@@ -40,7 +42,7 @@ public class Control_Panel {
             }
         } 
 	catch (SQLException e) {
-		  logger.info("An SQL exception occurred"+e);
+		logger.info(SQL_EXCEPTION_MESSAGE + e);
     }
 		String select_house="SELECT `id`, `name`, `image`, `location`, `available_services`, `price`, `information` FROM `houses` WHERE id_user=? And isAccept=1;";
 		try (PreparedStatement preparedStatement = con.getConnection().prepareStatement(select_house)) {
@@ -72,7 +74,7 @@ public class Control_Panel {
 			}   
         } 
 	catch (SQLException e) {
-		logger.info("An SQL exception occurred"+e);
+		logger.info(SQL_EXCEPTION_MESSAGE + e);
     }
 		
 			
@@ -92,7 +94,8 @@ public class Control_Panel {
             logger.info("count_tenants = "+this.count_tenants );
         } 
 	catch (SQLException e) {
-		logger.info("An SQL exception occurred"+e);    }
+		logger.info(SQL_EXCEPTION_MESSAGE + e);
+		}
 	}
 	
 	public void num_floor(int house_id) throws SQLException {
@@ -109,7 +112,8 @@ public class Control_Panel {
             logger.info("num_floor = "+this.num_floor );
         } 
 	catch (SQLException e) {
-		logger.info("An SQL exception occurred"+e);    }
+		logger.info(SQL_EXCEPTION_MESSAGE + e);
+		}
 	}
 	
 	public void num_apartment(int floor_id) throws SQLException {
@@ -126,7 +130,8 @@ public class Control_Panel {
             logger.info("num_apartment = "+this.num_apart );
         } 
 	catch (SQLException e) {
-		logger.info("An SQL exception occurred"+e);    }
+		logger.info(SQL_EXCEPTION_MESSAGE + e);
+		}
 	}
 	
 	public void num_details(int apart_id) throws SQLException {
@@ -173,11 +178,15 @@ public class Control_Panel {
                 }
             }
     
-        } }}
-            }}
+        } 
+		}
+                }
+            }
+            }
 	catch (SQLException e) {
-		logger.info("An SQL exception occurred"+e);    }
-	}
+		logger.info(SQL_EXCEPTION_MESSAGE + e);
+		}
+		}
 	}
 	
 
