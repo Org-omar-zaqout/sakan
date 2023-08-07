@@ -44,14 +44,10 @@ public class Dashboard{
 		this.num_bathroom=bath;
 		this.num_bedroom=bed;
 		this.balcony=balcony;
-		
-		
-		
+	
 		
 	}
-	
-	
-	
+
 
 	public boolean add(loginpage loginO) throws SQLException {
 	    connect con = new connect();
@@ -78,7 +74,7 @@ public class Dashboard{
 	}
 
 	private void addFloors(connect con, int num_floor, int num_apart) {
-	    try {
+	    
 	        for (int i = 1; i <= num_floor; i++) {
 	            String insert_floor = "INSERT INTO `floor`(`num_floor`, `id_house`, `num_apart`) VALUES (?, ?, ?);";
 	            logger.log(Level.INFO, "the owner logging");
@@ -87,15 +83,15 @@ public class Dashboard{
 	                statement.setInt(2, this.id_House);
 	                statement.setInt(1, i);
 	                statement.executeUpdate();
-	            } catch (SQLException e) {
+	                addApartments(con, num_apart);
+	            } 
+	            catch (SQLException e) {
 	            	logger.info(SQL_EXCEPTION_MESSAGE + e);
 	            }
 
-	            addApartments(con, num_apart);
+	            
 	        }
-	    } catch (SQLException e) {
-	    	logger.info(SQL_EXCEPTION_MESSAGE + e);
-	    }
+	     
 	}
 
 	private void addApartments(connect con, int num_apart) throws SQLException {

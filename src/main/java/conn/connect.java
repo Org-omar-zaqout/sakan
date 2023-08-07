@@ -17,21 +17,19 @@ public class connect {
     public void func() throws SQLException {
     	 Properties properties = new Properties();
     	 try (FileInputStream fis = new FileInputStream("D:\\Software\\untitled4\\src\\main\\java\\conn\\db.properties")) {
-             properties.load(fis);
+    		 Class.forName("com.mysql.cj.jdbc.Driver");
+    		 properties.load(fis);
              String url = properties.getProperty("db.url");
              String user = properties.getProperty("db.user");
              String pass = "db.password";
 
-        try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            
              connection = DriverManager.getConnection(url, user, pass);
            
             		logger.info("success conected");
-        } catch (ClassNotFoundException e) {
-        	logger.info("An SQL exception occurred"+e);
-        }
+       
     	 } 
-    	 catch (IOException e1) {
+    	 catch (IOException | ClassNotFoundException e1) {
 			
 			logger.info("Error"+e1);
 		}
