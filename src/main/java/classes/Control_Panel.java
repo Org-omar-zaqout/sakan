@@ -59,8 +59,7 @@ public class Control_Panel {
         				 String available_services = rs.getString("available_services");
         			     int price = rs.getInt("price");
         			     String information = rs.getString("information");
-        			     logger.log(Level.INFO, String.format("%d, %s, %s, %s, %s, %s, %d, %s", id_house, name, image,location +
-        			    		 ", " + available_services+"," + price + ", " + information));
+        			     logger.log(Level.INFO, String.format("%d, %s, %s, %s, %s, , %d, %s", id_house, name, image,location , available_services+"," + price + ", " + information));
         			       this.has_find=true; 
         			}
                 if(has_find==false) {
