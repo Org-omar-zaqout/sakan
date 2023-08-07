@@ -15,7 +15,8 @@ public class connect {
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            		connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/sakancom","root","");
+            String password="123456";
+            		connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/sakancom","root",password);
             		
             		logger.info("success conected");
         } catch (ClassNotFoundException e) {
@@ -37,7 +38,7 @@ public class connect {
                 }
 
             } catch (SQLException e) {
-                e.printStackTrace();
+            	logger.info("An SQL exception occurred"+e);
             }
         }
 
