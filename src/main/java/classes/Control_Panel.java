@@ -51,17 +51,24 @@ public class Control_Panel {
     		has_find=false;
             try (ResultSet rs = preparedStatement.executeQuery()) {
                 
-                	while(rs.next()){
-        				int id_house = rs.getInt("id");
-        				 String name = rs.getString("name");
-        				 String image = rs.getString("image");
-        				 String location = rs.getString("location");
-        				 String available_services = rs.getString("available_services");
-        			     int price = rs.getInt("price");
-        			     String information = rs.getString("information");
-        			     logger.info(id_house+" "+ name +" "+ image+" "+  location+" "+  available_services+" "+  price+" "+  information);
-        			       this.has_find=true; 
-        			}
+            	 try {
+                     while (rs.next()) {
+                         int id_house = rs.getInt("id");
+                         String name = rs.getString("name");
+                         String image = rs.getString("image");
+                         String location = rs.getString("location");
+                         String available_services = rs.getString("available_services");
+                         int price = rs.getInt("price");
+                         String information = rs.getString("information");
+
+                         if (shouldProcess(id_house, name, image, location, available_services, price, information)) {
+                             logger.info(String.format("%d %s %s %s %s %d %s", id_house, name, image, location, available_services, price, information));
+                             this.has_find = true;
+                         }
+                     }
+                 } catch (SQLException e) {
+                     logger.info("An SQL exception occurred: " + e);
+                 }
                 if(has_find==false) {
                 	logger.info("doesnt have any house");
                 }
@@ -186,6 +193,12 @@ public class Control_Panel {
 		logger.info(SQL_EXCEPTION_MESSAGE + e);
 		}
 		}
+	 private boolean shouldProcess(int id_house, String name, String image, String location, String available_services, int price, String information) {
+	        // Implement your precondition logic here
+	        // Return true if the record should be processed and logged, false otherwise
+	        // For example, you can add your condition checks here
+	        return true; // Replace with your actual condition
+	    }
 	}
 	
 
