@@ -2,20 +2,16 @@ package classes;
 
 import java.sql.SQLException;
 import java.util.Scanner;
-//import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.swing.JOptionPane;
-
-import conn.connect;
 
 
 public class Main {
 	
 	static Scanner scan = new Scanner(System.in);
 	static final Logger logger = Logger.getLogger(Main.class.getName());
-	private static final String NUMBER_NOT_EXIST_MESSAGE = "The number is not exist ";
+
 	 private static final String INVALID_OPTION_MESSAGE = "Invalid option";
 
 
@@ -84,8 +80,7 @@ public class Main {
 	}
 
 	private static void ownerFlow(Scanner scan, loginpage login) throws SQLException {
-	    Owner_add_houses ownerAdd = new Owner_add_houses();
-	    Dashboard dashboard = new Dashboard();
+
 	    Control_Panel controlPanel = new Control_Panel();
 	    logger.info("login AS Owner ");
 

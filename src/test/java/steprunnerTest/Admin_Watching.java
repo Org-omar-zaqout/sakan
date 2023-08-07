@@ -27,18 +27,18 @@ public class Admin_Watching {
 	
 	@Given("admin is login to watch")
 	public void admin_is_login_to_watch() {
-	    // Write code here that turns the phrase above into concrete actions
+	    
 		try {
 			login.validateCredentials("deyaa", "123");
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
 
 	@When("i want to Watching reservations")
 	public void i_want_to_watching_reservations() {
-	    // Write code here that turns the phrase above into concrete actions
+	    
 		try {
 			admin_watch.found_house();
 			assertEquals(true,admin_watch.is_found_book());

@@ -3,7 +3,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-//import java.util.Scanner;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -21,7 +21,7 @@ public class admin_advertisement {
 	 protected int option;
 	 protected boolean isAccept=false;
 	 protected boolean isReject=false;
-	// Scanner scan = new Scanner(System.in);
+
 	
 	public void Select_houses(loginpage login) throws SQLException{
 		String select_house="SELECT `id`, `name`, `image`, `location`, `available_services`, `price`, `information` FROM `houses` WHERE `isAccept`=0 And `isReject`=0";
