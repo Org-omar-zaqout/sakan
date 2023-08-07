@@ -17,6 +17,7 @@ public class Tenant_avilable_house {
 	protected int ccc;
 	private static final Logger logger = Logger.getLogger(Tenant_avilable_house.class.getName());
 	protected boolean flag_found=false;
+	 private static final String SQL_EXCEPTION_MESSAGE = "An SQL exception occurred";         
 	
 
 	
@@ -38,7 +39,7 @@ public class Tenant_avilable_house {
 	
 		}
 		catch (SQLException e) {
-			logger.info("An SQL exception occurred"+e);	
+			logger.info(SQL_EXCEPTION_MESSAGE + e);
 			}
 			
 		return flag_found;
@@ -111,7 +112,8 @@ public class Tenant_avilable_house {
 			            }
 			        } 
 				catch (SQLException e) {
-					logger.info("An SQL exception occurred"+e);			    }
+					logger.info(SQL_EXCEPTION_MESSAGE + e);
+					}
 					}
 					
 			}
@@ -156,7 +158,8 @@ public class Tenant_avilable_house {
 	            			            }
 	            			        } 
 	            				catch (SQLException e) {
-	            					logger.info("An SQL exception occurred"+e);	            			    }
+	            					logger.info(SQL_EXCEPTION_MESSAGE + e);
+	            					}
 	            					}
 	            				}
 	            					
@@ -177,7 +180,8 @@ public class Tenant_avilable_house {
 	           
 	        } 
 		catch (SQLException e) {
-			logger.info("An SQL exception occurred"+e);	    }
+			logger.info(SQL_EXCEPTION_MESSAGE + e);
+			}
 		
 	}
 

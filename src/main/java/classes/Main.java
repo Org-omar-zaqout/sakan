@@ -15,6 +15,8 @@ public class Main {
 	
 	static Scanner scan = new Scanner(System.in);
 	static final Logger logger = Logger.getLogger(Main.class.getName());
+	private static final String NUMBER_NOT_EXIST_MESSAGE = "The number is not exist ";
+	
 	public static void main(String[] args) throws SQLException  {
 	 boolean shouldContinue = true;
 		while(shouldContinue) {
@@ -52,7 +54,8 @@ if(login.isLoggedAdmin()) {
 	case 3 : Admin_switch3(login);
 	flag_admin=false;
 	break;
-	default:logger.info("The number is not exist ");
+	default:logger.info(NUMBER_NOT_EXIST_MESSAGE);
+    break;
 	
 	}
 	
@@ -85,7 +88,8 @@ break;
 	case 4 : Owner_switch4(login);
 	flag_Owner=false;
 	break;
-	default:logger.info("The number is not exist ");
+	default:logger.info(NUMBER_NOT_EXIST_MESSAGE);
+    break;
 	
 	}
 	
@@ -120,7 +124,8 @@ else if(login.isLoggedTenant()) {
 	case 5 : Tenant_switch5(login);
 	flag_tenant=false;
 	break;
-	default:logger.info("The number is not exist ");
+	default:logger.info(NUMBER_NOT_EXIST_MESSAGE);
+    break;
 	
 	}
 	

@@ -16,6 +16,8 @@ public class tenant_control_panel {
 	protected String usernameO;
 	protected String date_booking;
 	protected boolean conf;
+	private static final String USERNAME = "username";
+	private static final String COLUMN_CONTACT_INFO = "contact_info";
 	private static final Logger logger = Logger.getLogger(tenant_control_panel.class.getName());
 	public tenant_control_panel() {
 		this.conf=false;
@@ -39,7 +41,7 @@ public void personal_data(loginpage login) throws SQLException{
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 if (resultSet.next()) {
                     this.tenant_id = resultSet.getInt("id");
-                    this.usernameT = resultSet.getString("username");
+                    this.usernameT = resultSet.getString(USERNAME);
                 }
             }
         }
@@ -50,10 +52,10 @@ public void personal_data(loginpage login) throws SQLException{
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 if (resultSet.next()) {
                 	this.conf=true;
-                    this.contact_infoT = resultSet.getString("contact_info");
+                    this.contact_infoT = resultSet.getString(COLUMN_CONTACT_INFO);
                 }
             }
-            logger.log(Level.INFO,"contact_info"+""+this.contact_infoT+"    ");
+            logger.log(Level.INFO,COLUMN_CONTACT_INFO+""+this.contact_infoT+"    ");
         } 
 		try (PreparedStatement preparedStatement = con.getConnection().prepareStatement(owner_detels)) {
             preparedStatement.setInt(1,this.tenant_id);
@@ -61,12 +63,12 @@ public void personal_data(loginpage login) throws SQLException{
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 if (resultSet.next()) {
                 	this.conf=true;
-                	this.usernameO = resultSet.getString("username");
-                    this.contact_infoO = resultSet.getString("contact_info");
+                	this.usernameO = resultSet.getString(USERNAME);
+                    this.contact_infoO = resultSet.getString(COLUMN_CONTACT_INFO);
                 }
             }
-            logger.log(Level.INFO,"contact_info"+""+this.contact_infoO+"    ");
-            logger.log(Level.INFO,"username"+""+this.usernameO+"    ");
+            logger.log(Level.INFO,COLUMN_CONTACT_INFO+""+this.contact_infoO+"    ");
+            logger.log(Level.INFO,USERNAME+""+this.usernameO+"    ");
         }
 		try (PreparedStatement preparedStatement = con.getConnection().prepareStatement(date)) {
             preparedStatement.setInt(1,this.tenant_id);

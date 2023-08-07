@@ -13,7 +13,7 @@ import conn.connect;
 
 public class admin_advertisement {
 	connect con=new connect();
-	 
+	 private static final String SQL_EXCEPTION_MESSAGE = "An SQL exception occurred";
 	loginpage login =new loginpage();
 	 private static final Logger logger = Logger.getLogger(admin_advertisement.class.getName());
 	 protected boolean has_find;
@@ -53,7 +53,7 @@ public class admin_advertisement {
 	
 		}
 		catch (SQLException e) {
-			logger.info("An SQL exception occurred"+e);
+			logger.info(SQL_EXCEPTION_MESSAGE + e);	
 		}
 		
 	}
@@ -98,7 +98,7 @@ public class admin_advertisement {
 	                preparedStatement.executeUpdate();
 	            }
 	         catch (SQLException e) {
-	        	 logger.info("An SQL exception occurred"+e);
+	        	 logger.info(SQL_EXCEPTION_MESSAGE + e);
 	        }
 		}
 		else if(this.option==1) {
@@ -111,7 +111,7 @@ public class admin_advertisement {
 	                preparedStatement.executeUpdate();
 	            }
 	         catch (SQLException e) {
-	        	 logger.info("An SQL exception occurred"+e);
+	        	 logger.info(SQL_EXCEPTION_MESSAGE + e);
 	        }
 		}
 
