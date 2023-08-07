@@ -21,17 +21,17 @@ public class connect {
     	    try (Connection connection = DriverManager.getConnection(url, user, pass);
     	         Statement statement = connection.createStatement()) {
     	        
-    	        // Execute the ALTER USER query to change the password
+    	       
     	        statement.executeUpdate("ALTER USER 'root'@'localhost' IDENTIFIED BY 'new_password';");
 
-    	        // Your database operations here
+    	       
 
     	    } catch (SQLException e) {
-    	        // Handle SQL exception
+    	     
     	    	 logger.info("An SQL exception occurred: " + e);
     	    }
     	} catch (ClassNotFoundException ex) {
-    	    // Handle class loading exception
+    	   
     	    logger.info("Failed to load MySQL JDBC driver");
     	}
     }
