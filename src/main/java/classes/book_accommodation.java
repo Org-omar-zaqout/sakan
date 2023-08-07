@@ -22,7 +22,7 @@ public class book_accommodation {
 	protected int count_apart;
 	protected int avilable;
 	protected String university_majors;
-	protected String ages;
+	protected int ages;
 
 	
 	public book_accommodation() {
@@ -44,7 +44,9 @@ public class book_accommodation {
             if(this.count_apart==0)
             {
             	this.found=false;
-            logger.info("count_tenants = "+this.count_apart );
+            	 String logMessage = String.format("count_tenants = %d ",this.count_apart);
+                 logger.log(Level.INFO, logMessage);
+      
             }
             
         } 
@@ -117,9 +119,11 @@ String insert_house="INSERT INTO `tanents` ( `id_user`, `id_house`, `id_floor`, 
 
 	                        try (ResultSet resultSet = preparedStatement.executeQuery()) {
 	                            if (resultSet.next()) {
-	                                this.ages = resultSet.getString("ages");
+	                                this.ages = resultSet.getInt("ages");
 	                                this.university_majors = resultSet.getString("university majors");
-	                                logger.log(Level.INFO,"ages"+" "+this.ages+" "+"university majors"+" "+this.university_majors);
+	                                String logMessage = String.format("ages = %d  university majors %s",this.ages,this.university_majors);
+	                                logger.log(Level.INFO, logMessage);
+	                                
 	                            }
 	                        }
 	                	}

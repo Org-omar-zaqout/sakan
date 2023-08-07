@@ -3,7 +3,7 @@ package classes;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
+
 
 import conn.connect;
 
@@ -25,10 +25,7 @@ public class loginpage {
 
 	public loginpage(String username,String password) {
 	
-//		
-//		this.flag_login_admin = false;
-//		this.flag_login_owner = false;
-//		this.flag_login_tenant = false;
+
 		this.username = username;
 		this.password=password;
 		
@@ -55,28 +52,28 @@ public class loginpage {
                 if(type.equals(type_admin)) {
                 	this.flag_login_admin=true;
                 	this.flag_login=true;
-                	//return this.flag_login_admin;
+                	
                 }
                 else if(type.equals(type_owner)) {
                 	this.flag_login_owner=true;
                 	this.flag_login=true;
-                	//return this.flag_login_owner;
+                	
                 }
                 else {
                 	
                 	this.flag_login_tenant=true;
                 	this.flag_login=true;
-                	//return this.flag_login_tenant;
+                	
                 }
             }
             
 
         } catch (SQLException e) {
-          System.out.print(e);
+        	logger.info("SQLException"+e);
         }
 		return flag_login;
 
-        // The credentials are invalid
+       
         
     }
 	

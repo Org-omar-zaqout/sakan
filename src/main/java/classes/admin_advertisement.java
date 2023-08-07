@@ -40,8 +40,9 @@ public class admin_advertisement {
 				 String available_services = rs.getString("available_services");
 			     int price = rs.getInt("price");
 			     String information = rs.getString("information");
-			        logger.log(Level.INFO,id_house + ", " + name + ", " + image +
-	                           ", " + location + ", " + available_services+"," + price + ", " + information);
+			     String logMsg = String.format("%d , %s , %s , %s , %s , %d , %s ",id_house,name,image,location,available_services,price,information);
+   	             logger.log(Level.INFO, logMsg);
+			      
 			        has_find=true;
 			}
 			

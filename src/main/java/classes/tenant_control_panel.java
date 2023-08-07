@@ -45,7 +45,9 @@ public void personal_data(loginpage login) throws SQLException{
                 }
             }
         }
-		logger.log(Level.INFO,"name"+""+this.usernameT+"    ");
+		 String logMessage = String.format("name = %s ",this.usernameT);
+         logger.log(Level.INFO, logMessage);
+	
 		try (PreparedStatement preparedStatement = con.getConnection().prepareStatement(select_config)) {
             preparedStatement.setInt(1,this.tenant_id);
 
@@ -55,7 +57,9 @@ public void personal_data(loginpage login) throws SQLException{
                     this.contact_infoT = resultSet.getString(COLUMN_CONTACT_INFO);
                 }
             }
-            logger.log(Level.INFO,COLUMN_CONTACT_INFO+""+this.contact_infoT+"    ");
+            String logMsg = String.format("COLUMN_CONTACT_INFO = %s ",this.contact_infoT);
+            logger.log(Level.INFO, logMsg);
+            
         } 
 		try (PreparedStatement preparedStatement = con.getConnection().prepareStatement(owner_detels)) {
             preparedStatement.setInt(1,this.tenant_id);
@@ -67,8 +71,9 @@ public void personal_data(loginpage login) throws SQLException{
                     this.contact_infoO = resultSet.getString(COLUMN_CONTACT_INFO);
                 }
             }
-            logger.log(Level.INFO,COLUMN_CONTACT_INFO+""+this.contact_infoO+"    ");
-            logger.log(Level.INFO,USERNAME+""+this.usernameO+"    ");
+            String logMesg = String.format("contact_info = %s username : %s ",this.contact_infoO,this.usernameO);
+            logger.log(Level.INFO, logMesg);
+      
         }
 		try (PreparedStatement preparedStatement = con.getConnection().prepareStatement(date)) {
             preparedStatement.setInt(1,this.tenant_id);
@@ -80,7 +85,9 @@ public void personal_data(loginpage login) throws SQLException{
                     this.date_booking = resultSet.getString("date_booking");
                 }
             }
-            logger.log(Level.INFO,"date_booking"+""+this.date_booking+"    ");
+            String logMes = String.format("date_booking = %s ",this.date_booking);
+            logger.log(Level.INFO, logMes);
+            
         }
 	catch (SQLException e) {
 		logger.info("An SQL exception occurred"+e);    }

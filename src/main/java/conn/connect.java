@@ -7,6 +7,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.Properties;
 
@@ -43,7 +44,9 @@ public class connect {
 
                 if (resultSet.next()) {
                     int totalRows = resultSet.getInt("total_rows");
-                    logger.info("Total rows in the users table: " + totalRows);
+                    String logMessage = String.format("Total rows in the users table: %d ",totalRows);
+                    logger.log(Level.INFO, logMessage);
+                   
                 }
                 else {
                     logger.info("Connection is not established. Please call establishConnection() first.");

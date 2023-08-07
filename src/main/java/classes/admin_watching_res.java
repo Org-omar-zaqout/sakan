@@ -39,9 +39,10 @@ public void watching(loginpage login) throws SQLException {
 			 String username = rs.getString("username");
 			 String name_house = rs.getString("name");
 			 int id_floor = rs.getInt("id_floor");
-		     String id_apart = rs.getString("id_apart");
-		        logger.log(Level.INFO,"username   " + username+"  " + "name  " + name_house+"  "+"floor  " + id_floor +
-                           "  " + "apart" +id_apart+ "  ");
+		     int id_apart = rs.getInt("id_apart");
+		     String logMsg = String.format("username %s  name %s floor %d apart %d  ",username,name_house,id_floor,id_apart);
+	             logger.log(Level.INFO, logMsg);
+		        
 		        this.watch=true;
 		}
 		
@@ -73,7 +74,9 @@ public void found_house() throws SQLException {
         if(this.count_book>0)
         {
         	this.found_book=true;
-        logger.info("count_tenants = "+this.count_book );
+        	 String logMessage = String.format("count_tenants = %d ",this.count_book);
+             logger.log(Level.INFO, logMessage);
+        
         }
         
     } 

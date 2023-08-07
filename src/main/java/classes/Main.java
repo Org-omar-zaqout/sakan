@@ -210,11 +210,14 @@ public class Main {
 		boolean[] bal = new boolean[num_apartment];
 		
 		for(int i=0,j=1;i<num_apartment;i++,j++) {
-			logger.info("Enter num of bathroom for the apartment ("+j+")");			
+			 String logMessage = String.format("Enter num of bathroom for the apartment (%d) ",j);
+             logger.log(Level.INFO, logMessage);		
 			 bath[i]=scan.nextInt();
-			 logger.info("Enter num of bedroom for the apartment ("+j+")");
+			  String logMsg = String.format("Enter num of bedroom for the apartment  (%d) ",j);
+	         logger.log(Level.INFO, logMsg);
 			 bed[i]=scan.nextInt();
-			 logger.info("Enter true or false of balcony for the apartment ("+j+")");
+			 String logMsgg = String.format("Enter true or false of balcony for the apartment  (%d) ",j);
+             logger.log(Level.INFO, logMsgg);
 			 bal[i]=scan.nextBoolean();
 		}
 		Dashboard	dash=new Dashboard(id_House,num_floor, num_apartment,is_student, bath, bed, bal);
