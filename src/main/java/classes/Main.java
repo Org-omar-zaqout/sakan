@@ -16,134 +16,9 @@ public class Main {
 	static Scanner scan = new Scanner(System.in);
 	static final Logger logger = Logger.getLogger(Main.class.getName());
 	private static final String NUMBER_NOT_EXIST_MESSAGE = "The number is not exist ";
-	
-	/*public static void main(String[] args) throws SQLException  {
-	 boolean shouldContinue = true;
-		while(shouldContinue) {
-			
-		
-
-		
-		Scanner scan = new Scanner(System.in);
-		logger.info("Enter Username ");
-		String username=scan.next();
-		logger.info("Enter Password ");
-	 	String password=scan.next();
-	
-	 	
-		
-	loginpage login=new loginpage(username,password);
-	login.validateCredentials(username,password);
-///ADMIN
-if(login.isLoggedAdmin()) {
-	
-	admin_advertisement admin_adv=new admin_advertisement();
-	admin_watching_res admin_Watch=new admin_watching_res();
-	logger.info("login AS Admin ");
+	 private static final String INVALID_OPTION_MESSAGE = "Invalid option";
 
 
-	boolean flag_admin=true;
-	while(flag_admin) {
-		logger.info("1- Show add requests \n"+"2-  Watching reservations \n 3- Logout Admin \n choise option");
-		int S_swith=scan.nextInt();
-		switch(S_swith) {
-	case 1 : Admin_switch1(admin_adv,login); 
-    break;
-	case 2 : Admin_switch2(admin_Watch,login);
-	break;
-	case 3 : Admin_switch3(login);
-	flag_admin=false;
-	break;
-	default:logger.info(NUMBER_NOT_EXIST_MESSAGE);
-    break;
-	
-	}
-	
-	
-	}
-	
-	
-		
-}
-//OWNER
-else if(login.isLoggedOwner()) {
-	
-	Owner_add_houses ownir_add=new Owner_add_houses();
-	Dashboard Db=new Dashboard();
-	Control_Panel CP=new Control_Panel();
-	logger.info("login AS Owner ");
-	
-	boolean flag_Owner=true;
-	while(flag_Owner) {
-		
-		logger.info("1- Adding house \n"+"2-  Dashboard \n 3-  Control Panel \n 4- Logout Admin \n choise option");
-		int S_swith2=scan.nextInt();
-		switch(S_swith2) {
-	case 1 : Owner_switch1(ownir_add,login); 
-break;
-	case 2 : Owner_switch2(Db,login);
-	break;
-	case 3 : Owner_switch3(CP,login);
-	break;
-	case 4 : Owner_switch4(login);
-	flag_Owner=false;
-	break;
-	default:logger.info(NUMBER_NOT_EXIST_MESSAGE);
-    break;
-	
-	}
-	
-	
-	}	
-	
-}
-
-///Tenant
-else if(login.isLoggedTenant()) {
-	
-	Tenant_avilable_house tenant_aval=new Tenant_avilable_house();
-	book_accommodation tenant_book=new book_accommodation();
-	tenant_add_furniture tenant_furniture=new tenant_add_furniture();
-	tenant_control_panel tenant_CP =new tenant_control_panel();
-	logger.info("login AS Tenant ");
-
-	
-	boolean flag_tenant=true;
-	while(flag_tenant) {
-		logger.info("1- Show available housing \n"+"2-  book accommodation \n 3- Adding furniture \n 4-  The presence of a tenant control panel \n 5- Logout Tenant \n choise option");
-		int S_swith=scan.nextInt();
-		switch(S_swith) {
-	case 1 : Tenant_switch1(tenant_aval,login); 
-    break;
-	case 2 : Tenant_switch2(tenant_book,login);
-	break;
-	case 3 : Tenant_switch3(tenant_furniture,login);
-	break;
-	case 4 : Tenant_switch4(tenant_CP,login);
-	break;
-	case 5 : Tenant_switch5(login);
-	flag_tenant=false;
-	break;
-	default:logger.info(NUMBER_NOT_EXIST_MESSAGE);
-    break;
-	
-	}
-	
-	
-	}
-	
-		
-}
-
- logger.info("Do you want to continue? (y/n)");
-    String userInput = scan.nextLine();
-
-    if (userInput.equalsIgnoreCase("n")) {
-        shouldContinue = false;
-    }
-		}
-	}
-	*/
 	public static void main(String[] args) throws SQLException {
 	    Scanner scan = new Scanner(System.in);
 	    boolean shouldContinue = true;
@@ -202,7 +77,7 @@ else if(login.isLoggedTenant()) {
 	                flagAdmin = false;
 	                break;
 	            default:
-	                logger.info("Invalid option");
+	            	  logger.info(INVALID_OPTION_MESSAGE);
 	                break;
 	        }
 	    }
@@ -234,7 +109,7 @@ else if(login.isLoggedTenant()) {
 	                flagOwner = false;
 	                break;
 	            default:
-	                logger.info("Invalid option");
+	            	  logger.info(INVALID_OPTION_MESSAGE);
 	                break;
 	        }
 	    }
@@ -270,7 +145,7 @@ else if(login.isLoggedTenant()) {
 	                flagTenant = false;
 	                break;
 	            default:
-	                logger.info("Invalid option");
+	            	  logger.info(INVALID_OPTION_MESSAGE);
 	                break;
 	        }
 	    }
