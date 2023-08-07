@@ -91,7 +91,9 @@ public class Control_Panel {
                     this.count_tenants = resultSet.getInt("num_of_tenants");
                 }
             }
-            logger.info("count_tenants = "+this.count_tenants );
+            String logMessage = String.format("count_tenants =  %d",this.count_tenants);
+            logger.log(Level.INFO, logMessage);
+          
         } 
 	catch (SQLException e) {
 		logger.info(SQL_EXCEPTION_MESSAGE + e);
@@ -109,7 +111,9 @@ public class Control_Panel {
                     this.num_floor = resultSet.getInt("floor");
                 }
             }
-            logger.info("num_floor = "+this.num_floor );
+            String logMessage = String.format("num_floor =  %d",this.num_floor);
+            logger.log(Level.INFO, logMessage);
+          
         } 
 	catch (SQLException e) {
 		logger.info(SQL_EXCEPTION_MESSAGE + e);
@@ -127,7 +131,9 @@ public class Control_Panel {
                     this.num_apart = resultSet.getInt("apart");
                 }
             }
-            logger.info("num_apartment = "+this.num_apart );
+            String logMessage = String.format("num_apartment =  %d",this.num_apart);
+            logger.log(Level.INFO, logMessage);
+            
         } 
 	catch (SQLException e) {
 		logger.info(SQL_EXCEPTION_MESSAGE + e);
@@ -150,7 +156,8 @@ public class Control_Panel {
 
                 }
             }
-            logger.info("num_bathroom = "+this.num_bathroom +"  "+"num_bedroom = "+this.num_bedroom+"  "+"balcony = "+this.balcony );
+            String logMessage = String.format("num_bathroom = %d num_bedroom = %d balcony %d ",this.num_bathroom,this.num_bedroom,this.balcony);
+            logger.log(Level.INFO, logMessage);
         } 
 		try (PreparedStatement preparedStatement = con.getConnection().prepareStatement(select_id)) {
             preparedStatement.setInt(1,apart_id);
@@ -163,7 +170,9 @@ public class Control_Panel {
                     this.id_user = resultSet.getInt("id_user");
                     this.id = resultSet.getInt("id");
 
-               logger.info("id = "+this.id);
+                    String logMessage = String.format("id = %d ",this.id);
+                    logger.log(Level.INFO, logMessage);
+             
            
        
 		String select_name_contact_info="SELECT `contact_info` FROM `users` WHERE`id`=?;";
@@ -173,8 +182,9 @@ public class Control_Panel {
             try (ResultSet resultSet2 = preparedStatement2.executeQuery()) {
                 if (resultSet2.next()) {
                     this.contact_info = resultSet2.getString("contact_info");
-                   
-                    logger.info("id = "+this.id +"  "+"user = "+this.id_user +"  "+"contact_info = "+this.contact_info);
+                    String logMessag = String.format("id = %d user = %d contact_info = %s ",this.id,this.id_user,this.contact_info);
+                    logger.log(Level.INFO, logMessag);
+                  
                 }
             }
     
