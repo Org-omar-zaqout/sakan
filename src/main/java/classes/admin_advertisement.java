@@ -60,7 +60,7 @@ public class admin_advertisement {
 	}
 	
 	public void joption(){
-		 int option = JOptionPane.showOptionDialog(
+		 int options = JOptionPane.showOptionDialog(
 	                null,
 	                "Do you want to accept or reject?",
 	                "Confirmation",
@@ -70,17 +70,17 @@ public class admin_advertisement {
 	                new Object[]{"Accept", "Reject"},
 	                "Accept");
 		 	
-	        if (option == JOptionPane.YES_OPTION) {
+	        if (options == JOptionPane.YES_OPTION) {
 	            JOptionPane.showMessageDialog(null, "Accepted!");
-	            this.option=option;
+	            this.option=options;
 	            this.isAccept=true;
-	        } else if (option == JOptionPane.NO_OPTION) {
+	        } else if (options == JOptionPane.NO_OPTION) {
 	            JOptionPane.showMessageDialog(null, "Rejected!");
-	            this.option=option;
+	            this.option=options;
 	            this.isReject=true;
 	        } else {
 	            JOptionPane.showMessageDialog(null, "No option selected!");
-	            this.option=option;
+	            this.option=options;
 	        }
 	        
 	}

@@ -49,9 +49,9 @@ public class Tenant_avilable_house {
 	public void Select_houses(loginpage login) throws SQLException {
 	    con.func();
 
-	    int tenant_id = getTenantId(login);
+	    int tenantId = getTenantId(login);
 
-	    if (tenant_id == -1) {
+	    if (tenantId == -1) {
 	        logger.info("Error retrieving tenant ID");
 	        return;
 	    }

@@ -52,7 +52,7 @@ public class Dashboard{
 	public boolean add(loginpage loginO) throws SQLException {
 	    connect con = new connect();
 	    con.func();
-	    int num_floor = this.num_floor;
+	    int numberFloor = this.num_floor;
 	    int num_apart = this.num_apartment;
 	    adding = false;
 
@@ -63,7 +63,7 @@ public class Dashboard{
 	            ResultSet resultSet1 = statement1.executeQuery();
 
 	            if (resultSet1.next()) {
-	                addFloors(con, num_floor, num_apart);
+	                addFloors(con, numberFloor, num_apart);
 	            }
 	        }
 	    } else {
