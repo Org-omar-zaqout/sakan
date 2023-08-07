@@ -26,9 +26,6 @@ public class Control_Panel {
 	 private static final Logger logger = Logger.getLogger(admin_advertisement.class.getName());
 	 
 
-	public Control_Panel() {
-		
-	}
 
 	public void Select_houses(loginpage login) throws SQLException{
 		con.func();
