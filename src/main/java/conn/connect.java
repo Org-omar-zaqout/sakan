@@ -14,26 +14,21 @@ import java.util.Properties;
 public class connect {
 	protected Connection connection;
 	 private static final Logger logger = Logger.getLogger(connect.class.getName());
-    public void func() throws SQLException {
-    	 Properties properties = new Properties();
-    	 try (FileInputStream fis = new FileInputStream("D:\\Software\\untitled4\\src\\main\\java\\conn\\db.properties")) {
-    		 Class.forName("com.mysql.cj.jdbc.Driver");
-    		 properties.load(fis);
-             String url = properties.getProperty("db.url");
-             String user = properties.getProperty("db.user");
-             String pass = "db.password";
+	 public void func() throws SQLException {
+		    Properties properties = new Properties();
+		    try (FileInputStream fis = new FileInputStream("D:\\Software\\untitled4\\src\\main\\java\\conn\\db.properties")) {
+		        Class.forName("com.mysql.cj.jdbc.Driver");
+		        properties.load(fis);
+		        String url = properties.getProperty("db.url");
+		        String user = properties.getProperty("db.user");
+		        String pass = properties.getProperty("db.password");
 
-            
-             connection = DriverManager.getConnection(url, user, pass);
-           
-            		logger.info("success conected");
-       
-    	 } 
-    	 catch (IOException | ClassNotFoundException e1) {
-			
-			logger.info("Error"+e1);
+		        connection = DriverManager.getConnection(url, user, pass);
+		        logger.info("success connected");
+		    } catch (IOException | ClassNotFoundException e1) {
+		        logger.info("Error" + e1);
+		    }
 		}
-    }
 
     public void executeStatement(String sqlStatement) {
     	 try (Statement statement = connection.createStatement()) {
