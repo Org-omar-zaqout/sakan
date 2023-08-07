@@ -33,7 +33,7 @@ public class tenant_add_furniture{
 		con.func();
 		String namee=login.username;
 		String insert_furniture="INSERT INTO `furniture` ( `name`,`price`,`id_tenants`) VALUES (?,?,?);";
-		Statement stmt = con.getConnection().prepareStatement(insert_furniture);
+		
 		
 		String select_id="SELECT `id` FROM `users` WHERE `type_user`='tenant' And `username`=?;";
 		try (PreparedStatement preparedStatement = con.getConnection().prepareStatement(select_id)) {

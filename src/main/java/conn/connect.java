@@ -21,10 +21,10 @@ public class connect {
              String user = properties.getProperty("db.user");
              String pass = "db.password";
 
-        try {
+        try{
             Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = DriverManager.getConnection(url, user, pass);
-            		
+             connection = DriverManager.getConnection(url, user, pass);
+           
             		logger.info("success conected");
         } catch (ClassNotFoundException e) {
         	logger.info("An SQL exception occurred"+e);

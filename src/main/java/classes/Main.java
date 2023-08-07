@@ -203,8 +203,8 @@ else if(login.isLoggedTenant()) {
 			 logger.info("Enter true or false of balcony for the apartment ("+j+")");
 			 bal[i]=scan.nextBoolean();
 		}
-			Db=new Dashboard(id_House,num_floor, num_apartment,is_student, bath, bed, bal);
-			Db.add(login);
+		Dashboard	dash=new Dashboard(id_House,num_floor, num_apartment,is_student, bath, bed, bal);
+		dash.add(login);
 	}
 	public static void Owner_switch3(Control_Panel CP,loginpage login) throws SQLException {
 		
@@ -243,18 +243,18 @@ public static void Tenant_switch2(book_accommodation tenant_book,loginpage login
 	int id_apart=scan.nextInt();
 	
 	
-	tenant_book=new book_accommodation(id_house,id_floor,id_apart);
-	tenant_book.insert_book(login);
+	book_accommodation Bookaccommodation=new book_accommodation(id_house,id_floor,id_apart);
+	Bookaccommodation.insert_book(login);
 	
 }
-public static void Tenant_switch3(tenant_add_furniture tenant_furniture,loginpage login) throws SQLException {
+public static void Tenant_switch3(tenant_add_furniture tt,loginpage login) throws SQLException {
 	
 	logger.info("Enter name ");
 	String name=scan.next();	
 	logger.info("Enter price ");
 	int price=scan.nextInt();
 	
-	tenant_furniture=new tenant_add_furniture(name,price);
+	tenant_add_furniture tenant_furniture=new tenant_add_furniture(name,price);
 	tenant_furniture.add_furniture(login);
 	
 }

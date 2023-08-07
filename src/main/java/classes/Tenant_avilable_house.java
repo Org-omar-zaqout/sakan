@@ -24,7 +24,8 @@ public class Tenant_avilable_house {
 	public boolean is_found() throws SQLException {
 		String num_house="SELECT COUNT(*) FROM `apartments` WHERE `avilable`=1;";
 		con.func();
-		Statement stmt = con.getConnection().createStatement();
+		try(Statement stmt = con.getConnection().createStatement();){
+		
 		ResultSet rs=stmt.executeQuery(num_house);
 		if(rs.next()) {
 			int rowCount=rs.getInt(1);
@@ -34,8 +35,13 @@ public class Tenant_avilable_house {
 		
 		
 		
+	
+		}
+		catch (SQLException e) {
+			logger.info("An SQL exception occurred"+e);	
+			}
+			
 		return flag_found;
-		
 		
 	}
 	
