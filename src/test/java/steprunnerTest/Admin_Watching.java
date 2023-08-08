@@ -1,7 +1,7 @@
 package steprunnerTest;
 
 import static org.junit.Assert.assertEquals;
-
+import conn.connect;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -12,12 +12,14 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class Admin_Watching {
-
+	connect con=new connect();
 	loginpage login;
 	admin_watching_res admin_watch;
 	   private static final Logger logger = Logger.getLogger(Admin_Watching.class.getName());
 	
-	public Admin_Watching(admin_watching_res admin_watch) {
+	public Admin_Watching(admin_watching_res admin_watch) throws SQLException {
+		con.func();
+		
 		this.login=new loginpage("deyaa","123");
 		this.admin_watch=admin_watch;
 	}
