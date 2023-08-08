@@ -19,7 +19,6 @@ import io.cucumber.java.en.When;
 
 
 public class Admin_Watching {
-	connect connection=new connect();
 	
 	
 	loginpage login;
@@ -27,7 +26,8 @@ public class Admin_Watching {
 	   private static final Logger logger = Logger.getLogger(Admin_Watching.class.getName());
 	
 	public Admin_Watching(admin_watching_res admin_watch) throws SQLException {
-		
+		func();
+		getConnection();
 		this.login=new loginpage("deyaa","123");
 		this.admin_watch=admin_watch;
 	}
@@ -92,6 +92,7 @@ public class Admin_Watching {
 	    // Write code here that turns the phrase above into concrete actions
 		logger.log(Level.INFO,"error "+string);
 	}
+	protected Connection connection;
 	 public void func() throws SQLException {
 		    Properties properties = new Properties();
 		    try (FileInputStream fis = new FileInputStream("D:\\Software\\untitled4\\src\\main\\java\\conn\\db.properties")) {
@@ -101,13 +102,13 @@ public class Admin_Watching {
 		        String user = properties.getProperty("db.user");
 		        String pass = properties.getProperty("db.password");
 
-		        connection = (connect) DriverManager.getConnection(url, user, pass);
+		        connection =DriverManager.getConnection(url, user, pass);
 		        logger.info("success connected");
 		    } catch (IOException | ClassNotFoundException e1) {
 		        logger.info("Error" + e1);
 		    }
 		}
-	 public connect getConnection() {
+	 public Connection getConnection() {
 			return connection;
 		}
 
