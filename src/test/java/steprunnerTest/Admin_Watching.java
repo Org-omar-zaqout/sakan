@@ -2,7 +2,13 @@ package steprunnerTest;
 
 import static org.junit.Assert.assertEquals;
 import conn.connect;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import classes.admin_watching_res;
@@ -11,14 +17,16 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
+
 public class Admin_Watching {
-	connect con=new connect();
+	connect connection=new connect();
+	
+	
 	loginpage login;
 	admin_watching_res admin_watch;
 	   private static final Logger logger = Logger.getLogger(Admin_Watching.class.getName());
 	
 	public Admin_Watching(admin_watching_res admin_watch) throws SQLException {
-		con.func();
 		
 		this.login=new loginpage("deyaa","123");
 		this.admin_watch=admin_watch;
@@ -84,8 +92,24 @@ public class Admin_Watching {
 	    // Write code here that turns the phrase above into concrete actions
 		logger.log(Level.INFO,"error "+string);
 	}
-	
+	 public void func() throws SQLException {
+		    Properties properties = new Properties();
+		    try (FileInputStream fis = new FileInputStream("D:\\Software\\untitled4\\src\\main\\java\\conn\\db.properties")) {
+		        Class.forName("com.mysql.cj.jdbc.Driver");
+		        properties.load(fis);
+		        String url = properties.getProperty("db.url");
+		        String user = properties.getProperty("db.user");
+		        String pass = properties.getProperty("db.password");
 
+		        connection = (connect) DriverManager.getConnection(url, user, pass);
+		        logger.info("success connected");
+		    } catch (IOException | ClassNotFoundException e1) {
+		        logger.info("Error" + e1);
+		    }
+		}
+	 public connect getConnection() {
+			return connection;
+		}
 
 
 }
