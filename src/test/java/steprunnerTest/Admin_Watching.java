@@ -5,8 +5,6 @@ import static org.junit.Assert.assertEquals;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import classes.admin_advertisement;
 import classes.admin_watching_res;
 import classes.loginpage;
 import io.cucumber.java.en.Given;
@@ -17,7 +15,7 @@ public class Admin_Watching {
 
 	loginpage login;
 	admin_watching_res admin_watch;
-	   private static final Logger logger = Logger.getLogger(dashboard.class.getName());
+	   private static final Logger logger = Logger.getLogger(Admin_Watching.class.getName());
 	
 	public Admin_Watching(admin_watching_res admin_watch) {
 		this.login=new loginpage("deyaa","123");

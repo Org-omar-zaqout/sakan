@@ -118,7 +118,7 @@ public class Tenant_avilable_house {
 	                            String location = resultSet.getString("location");
 	                            String available_services = resultSet.getString("available_services");
 	                            int price = resultSet.getInt("price");
-	                            String logMsg = String.format("%d , %s , %d , %d , %s , %s , %d ",id_house,name,id_floor,id_apartment,location,available_services,price);
+	                            String logMsg = String.format("%d , %s , %s ,%d , %d , %s , %s , %d ",id_house,name,image,id_floor,id_apartment,location,available_services,price);
 	           	             logger.log(Level.INFO, logMsg);
 	                           
 	                        }

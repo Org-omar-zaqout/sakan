@@ -20,7 +20,7 @@ public class Dashboard{
 	protected String name_apart[];
 	protected boolean adding;
 	int x;
-	private static final Logger logger = Logger.getLogger(Owner_add_houses.class.getName());
+	private static final Logger logger = Logger.getLogger(Dashboard.class.getName());
 	private static final String SQL_EXCEPTION_MESSAGE = "An SQL exception occurred";
 	
 

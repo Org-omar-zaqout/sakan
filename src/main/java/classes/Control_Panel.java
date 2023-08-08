@@ -24,7 +24,7 @@ public class Control_Panel {
 	protected String contact_info;
 	protected int id;
     private static final String SQL_EXCEPTION_MESSAGE = "An SQL exception occurred";
-	 private static final Logger logger = Logger.getLogger(admin_advertisement.class.getName());
+	 private static final Logger logger = Logger.getLogger(Control_Panel.class.getName());
 	 
 	 
 

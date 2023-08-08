@@ -5,7 +5,6 @@ import static org.junit.Assert.assertEquals;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import classes.admin_advertisement;
 import classes.book_accommodation;
 import classes.loginpage;
 import io.cucumber.java.en.Given;

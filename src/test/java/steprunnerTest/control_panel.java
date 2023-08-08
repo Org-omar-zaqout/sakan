@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.sql.SQLException;
 
-import java.util.logging.Logger;
+
 
 import classes.Control_Panel;
 
@@ -15,7 +15,7 @@ import io.cucumber.java.en.When;
 
 public class control_panel {
 	
-	private static final Logger logger = Logger.getLogger(control_panel.class.getName());
+
 	loginpage login;
 	Control_Panel control;
 	
