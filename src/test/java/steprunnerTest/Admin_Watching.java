@@ -1,7 +1,7 @@
 package steprunnerTest;
 
 import static org.junit.Assert.assertEquals;
-import conn.connect;
+
 
 import java.io.FileInputStream;
 import java.io.IOException;
